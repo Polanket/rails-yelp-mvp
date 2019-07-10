@@ -7,7 +7,7 @@
     <p><%= "[#{review.rating}/5] - #{review.content}" %></p>
   <% end %>
 
-  <%= simple_form_for @review, url: restaurant_reviews_path(@restaurant.id) do |f| %>
+  <%= simple_form_for([@restaurant, @review]) do |f| %>
     <% if @review.errors.any? %>
       <div class="errors-container">
         <ul>
