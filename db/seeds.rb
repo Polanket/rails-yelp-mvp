@@ -7,3 +7,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database'
+Restaurant.destroy_all
+
+puts 'Injecting data'
+5.times do
+  restaurant = Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: %w[chinese italian japanese french belgian].sample
+  )
+  3.times do
+    review = Review.create!(
+      restaurant: restaurant,
+      content: Faker::Restaurant.review,
+      rating: [0, 1, 2, 3, 4, 5].sample
+    )
+  end
+end
+
+puts 'Data injected succesfully'

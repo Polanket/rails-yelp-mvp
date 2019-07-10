@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <div class="navbar navbar-dark" style="background-color: black;">
+      <h1>
+        <%= link_to 'Restaurants', restaurants_path, class: 'text-white' %>
+      </h1>
+      <%= link_to '+ Add Restaurant', new_restaurant_path, class: 'btn btn-light' %>
+    </div>
     <%= yield %>
   </body>
 </html>
